@@ -1,23 +1,5 @@
 #include "libftprintf.h"
 
-int		ft_get_base(t_conv *flags)
-{
-	if (flags->output == 'd' || flags->output == 'i' || flags->output == 'U' ||
-		flags->output == 'u')
-	{
-		return (10);
-	}
-	if (flags->output == 'x' || flags->output == 'X')
-	{
-		return (16);
-	}
-	if (flags->output == 'o' || flags->output == 'O')
-	{
-		return (8);
-	}
-	return (10);
-}
-
 int ft_calc_signed_num_width(intmax_t arg, t_conv *flags)
 {
 	int res;
@@ -74,7 +56,7 @@ int ft_calc_str_width(char *str, t_conv *flags) //not tasted and not done yet
 		c = '0';
 	else
 		c = ' ';
-	len = ft_strlen(str);
+	len = (int)ft_strlen(str);
 	res = flags->width;
 	if (flags->precision != 0 && flags->precision < len)
 		len = flags->precision;

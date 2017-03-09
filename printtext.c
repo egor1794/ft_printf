@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printtext.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/09 14:28:54 by ymushet           #+#    #+#             */
+/*   Updated: 2017/03/09 14:34:12 by ymushet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-int ft_print_text(t_conv *flags, void *ar)  //handle ls and lc case;
+int	ft_print_text(t_conv *flags, void *ar)
 {
 	if (flags->output == 's' || flags->output == 'S')
 		return (ft_printstrandflags(flags, (char *)ar));
 	if (flags->output == 'c' || flags->output == 'C')
-		return (ft_printcharwithflags((char )ar,flags));
-	/*if (flags->output == 'S')
+		return (ft_printcharwithflags((char)ar, flags));
+	/*if (flags->output == 'S')				//plans for the future
 		return (ft_wprintstrwithflags(());*/
-    return (-1);
+	return (-1);
 }
 
-int ft_printstrandflags(t_conv *flags, char *str)
+int	ft_printstrandflags(t_conv *flags, char *str)
 {
 	if (str == NULL)
 		str = "(null)";
@@ -28,18 +40,19 @@ int ft_printstrandflags(t_conv *flags, char *str)
 	return (flags->count);
 }
 
-int ft_printstr(char *str, t_conv *flags)
+int	ft_printstr(char *str, t_conv *flags)
 {
 	int len;
 	int tmp;
 
-	len = ft_strlen(str);
+	len = (int)ft_strlen(str);
 	if (len == 0)
 	{
 		ft_putstr("");
 		return (0);
 	}
-	flags->precision != 0 && flags->precision < len ? len = flags->precision : 0;
+	flags->precision != 0 && flags->precision < len
+	? len = flags->precision : 0;
 	tmp = len;
 	while (len > 0)
 	{

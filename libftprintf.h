@@ -7,7 +7,7 @@
 # define HEX_BASE "0123456789ABCDEF"
 # define HEx_BASE "0123456789abcdef"
 # define OCT_BASE "01234567"
-# define BIN_BASE "01"
+//# define BIN_BASE "01"
 # define DEC_BASE "0123456789"
 # define CNVS "#+- 0%sSpdDioOuUxXcChljz0123456789."
 
@@ -49,7 +49,7 @@ int ft_calc_str_width(char *str, t_conv *flags);
 int ft_printstr(char *str, t_conv *flags);
 int ft_printcharwithflags(char c, t_conv *flags);
 void ft_putnbr_base(uintmax_t num, char *base);
-int ft_calc_char_width(t_conv *flags);
+int ft_calc_char_width(t_conv *flags); //code it
 int ft_get_unsigned_precision(t_conv *flags, uintmax_t ar);
 int ft_kostyl2(t_conv *flags, uintmax_t ar);
 unsigned int ft_udigits(uintmax_t arg, int base);
@@ -64,5 +64,8 @@ int ft_print_percent(t_conv *flags);
 void ft_bzero_flags(t_conv *flags);
 int ft_print_signed_zero(t_conv *flags);
 int ft_print_nonformat(t_conv *flags);
+void ft_modifier_bigletter(t_conv *flags);
+int ft_print_signed_arg(t_conv *flags, intmax_t ar);
+int ft_print_morezero_withzerof(t_conv *flags, intmax_t ar);
 #endif
 //0 игнорируется если есть точность

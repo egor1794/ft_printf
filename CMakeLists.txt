@@ -81,7 +81,8 @@ set(SOURCE_FILES
         printtext.c
         unsigned.c
         undefined.c
-        ft_printf.c)
+        ft_printf.c
+        signed.c)
 
 
 add_executable(ft_printf2 ${SOURCE_FILES})

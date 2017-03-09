@@ -36,7 +36,7 @@ int ft_printf(const char *fmt, ...)
 	return (res);
 }
 
-int ft_percent_found(char **fmt, t_conv *flags, va_list args)
+/*int ft_percent_found(char **fmt, t_conv *flags, va_list args)
 {
 	int res;
 
@@ -49,7 +49,7 @@ int ft_percent_found(char **fmt, t_conv *flags, va_list args)
 		res += ft_print_arg(flags, va_arg(args, void*)) - 1; //iterate string here please. 	ft_printf("{%04.1d}", 0);ft_printf("{%2d}", 0);
 	ft_bzero_flags(flags);
 	return (res);
-}
+}*/
 
 void ft_bzero_flags(t_conv *flags)
 {
@@ -68,9 +68,10 @@ void ft_bzero_flags(t_conv *flags)
 
 /*int  main()
 {
-	int a = ft_printf("@main_ftprintf: %###-#0000 33...12..#0+0d", 256);
+	int c = 10;
+	int a = ft_printf("%p", NULL);
 	printf("\n%d\n", a);
-	int b = printf("%ll#x", 9223372036854775807);
+	int b = printf("%p", NULL);
 	printf("\n%d", b);
 }*/
 

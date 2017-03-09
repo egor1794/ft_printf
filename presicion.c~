@@ -1,23 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   presicion.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/09 14:20:00 by ymushet           #+#    #+#             */
-/*   Updated: 2017/03/09 14:23:04 by ymushet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libftprintf.h"
 
-int	ft_get_signed_precision(t_conv *flags, intmax_t ar)
+int ft_get_signed_precision(t_conv *flags, intmax_t ar)
 {
-	int	res;
-	int	digits;
-	int	base;
-	int	tmp;
+	int res;
+	int digits;
+	int base;
+	int tmp;
 
 	digits = 0;
 	base = ft_get_base(flags);
@@ -34,6 +22,8 @@ int	ft_get_signed_precision(t_conv *flags, intmax_t ar)
 			res = 0;
 		else
 			res = res - digits;
+			flags->kostyl = res;
+		//digits >= res ? res = 0 : res -= digits;
 	}
 	tmp = res;
 	while (tmp-- > 0)
@@ -41,7 +31,7 @@ int	ft_get_signed_precision(t_conv *flags, intmax_t ar)
 	return (res);
 }
 
-int	ft_kostyl(t_conv *flags, intmax_t ar)
+int ft_kostyl(t_conv *flags, intmax_t ar)
 {
 	int res;
 	int digits;
@@ -67,7 +57,7 @@ int	ft_kostyl(t_conv *flags, intmax_t ar)
 	return (flags->kostyl);
 }
 
-int	ft_get_unsigned_precision(t_conv *flags, uintmax_t ar)
+int ft_get_unsigned_precision(t_conv *flags, uintmax_t ar)
 {
 	int res;
 	int digits;
@@ -89,6 +79,8 @@ int	ft_get_unsigned_precision(t_conv *flags, uintmax_t ar)
 			res = 0;
 		else
 			res = res - digits;
+		flags->kostyl = res;
+		//digits >= res ? res = 0 : res -= digits;
 	}
 	tmp = res;
 	while (tmp-- > 0)
@@ -96,7 +88,7 @@ int	ft_get_unsigned_precision(t_conv *flags, uintmax_t ar)
 	return (res);
 }
 
-int	ft_kostyl2(t_conv *flags, uintmax_t ar)
+int ft_kostyl2(t_conv *flags, uintmax_t ar)
 {
 	int res;
 	int digits;
