@@ -66,5 +66,23 @@ int ft_print_p(t_conv *flags, uintmax_t ar) //need to recode
 {
 	flags->output = 'x';
 	flags->hash = 1;
-	return (ft_print_unsigned_arg(flags,ar));
+	flags->minuszero == 1 && flags->precision != 0 ? flags->minuszero = 0 : 0;
+	if (flags->minuszero == 2)
+	{
+		flags->count += ft_put_hash(flags);
+		flags->count += ft_get_unsigned_precision(flags, ar);
+		flags->count += ft_udigits(ar, ft_get_base(flags));
+		ft_putnbr_base(ar, ft_get_ubase(flags));
+		flags->count += ft_calc_unsigned_num_width(ar, flags);
+	}
+	if (flags->minuszero != 2)
+	{
+		flags->minuszero == 1 ? flags->count += ft_put_hash(flags) : 0;
+		flags->count += ft_calc_unsigned_num_width(ar, flags);
+		flags->minuszero != 1 ? flags->count += ft_put_hash(flags) : 0;
+		flags->count += ft_get_unsigned_precision(flags, ar);
+		flags->count += ft_udigits(ar, ft_get_base(flags));
+		ft_putnbr_base(ar, ft_get_ubase(flags));
+	}
+	return (flags->count);
 }
