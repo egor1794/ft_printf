@@ -45,7 +45,7 @@ char *ft_get_ubase(t_conv *flags)
     return (DEC_BASE);
 }
 
-int ft_print_p(t_conv *flags, uintmax_t ar) //need to recode
+int ft_print_p(t_conv *flags, uintmax_t ar) //updated
 {
 	flags->output = 'x';
 	flags->hash = 1;
