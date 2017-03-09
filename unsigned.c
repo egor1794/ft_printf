@@ -1,22 +1,5 @@
 #include "libftprintf.h"
 
-/*int ft_print_signed_arg(t_conv *flags, intmax_t ar)
-{
-	flags->minuszero == 1 && flags->precision != 0 ? flags->minuszero = 0 : 0; //КОСТЫЛЬ стоявший в парсинге но для чего ?
-	if (ar < 0) // space are not printed for negative numbers;
-	{
-		flags->count = ft_print_lesszero(flags, ar);
-	}
-	else if (ar >= 0)
-	{
-		flags->count = ft_print_morezero(flags, ar);
-	}
-	return (flags->count);
-
- 		if (ft_strchr(CNVS,c))
-		return (0);
-}*/
-
 int ft_print_unsigned_zero(t_conv *flags, uintmax_t ar)
 {
 	flags->count += ft_calc_unsigned_num_width(ar, flags);
