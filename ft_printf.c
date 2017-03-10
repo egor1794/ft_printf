@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/10 17:32:03 by ymushet           #+#    #+#             */
+/*   Updated: 2017/03/10 17:33:42 by ymushet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-int ft_printf(const char *fmt, ...)
+int		ft_printf(const char *fmt, ...)
 {
-	int res;
-	va_list args;
-	t_conv *flags;
+	int		res;
+	va_list	args;
+	t_conv	*flags;
 
 	flags = ft_new_struct();
 	res = 0;
 	va_start(args, fmt);
-	while(*fmt != '\0')
+	while (*fmt != '\0')
 	{
-		if(*fmt != '%')
+		if (*fmt != '%')
 			write(1, &(*fmt), 1);
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 		{
@@ -27,7 +39,7 @@ int ft_printf(const char *fmt, ...)
 	return (res);
 }
 
-int ft_percent_found(char **fmt, t_conv *flags, va_list args)
+int		ft_percent_found(char **fmt, t_conv *flags, va_list args)
 {
 	int res;
 
@@ -42,7 +54,7 @@ int ft_percent_found(char **fmt, t_conv *flags, va_list args)
 	return (res);
 }
 
-void ft_bzero_flags(t_conv *flags)
+void	ft_bzero_flags(t_conv *flags)
 {
 	flags->letter = 0;
 	flags->output = '\0';

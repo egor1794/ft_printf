@@ -6,7 +6,7 @@
 /*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 14:28:54 by ymushet           #+#    #+#             */
-/*   Updated: 2017/03/09 14:34:12 by ymushet          ###   ########.fr       */
+/*   Updated: 2017/03/10 17:57:14 by ymushet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_print_text(t_conv *flags, void *ar)
 	if (flags->output == 'c' || flags->output == 'C')
 		return (ft_printcharwithflags((char)ar, flags));
 	if (flags->output == 'S')
-		return(ft_printwstr_withflags((wchar_t *)ar, flags));
+		return (ft_printwstr_withflags((wchar_t *)ar, flags));
 	return (-1);
 }
 
@@ -70,7 +70,7 @@ int	ft_printstr(char *str, t_conv *flags)
 	return (tmp);
 }
 
-int ft_printcharwithflags(char c, t_conv *flags)
+int	ft_printcharwithflags(char c, t_conv *flags)
 {
 	if (flags->minuszero != 2)
 	{

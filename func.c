@@ -6,7 +6,7 @@
 /*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 15:50:56 by ymushet           #+#    #+#             */
-/*   Updated: 2017/03/09 16:04:45 by ymushet          ###   ########.fr       */
+/*   Updated: 2017/03/10 17:38:53 by ymushet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		ft_get_base(t_conv *flags)
 char	*ft_get_ubase(t_conv *flags)
 {
 	if (flags->output == 'x')
-		return(HEx_BASE);
+		return (HEXX_BASE);
 	if (flags->output == 'X')
 		return (HEX_BASE);
 	if (flags->output == 'o' || flags->output == 'O')

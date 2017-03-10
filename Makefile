@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 OBJ = $(SRC:.c=.o)
 
-SRC = func.c ft_printf.c modifier.c parsing.c presicion.c print.c printtext.c unsigned.c width.c undefined.c signed.c wchar.c
+SRC = func.c ft_printf.c modifier.c parsing.c presicion.c print.c printtext.c unsigned.c width.c undefined.c \
+signed.c wchar.c unsigned2.c textwidth.c
 
 all : $(NAME)
 

@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymushet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/10 17:39:58 by ymushet           #+#    #+#             */
+/*   Updated: 2017/03/10 17:55:34 by ymushet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libftprintf.h"
 
-int ft_nonformat(char c)
+int		ft_nonformat(char c)
 {
-	if (ft_strchr(CNVS,c))
+	if (ft_strchr(CNVS, c))
 		return (0);
 	return (1);
 }
 
-void ft_is_nonletter(char *str, t_conv *flags)
+void	ft_is_nonletter(char *str, t_conv *flags)
 {
 	if (*str == '#')
 		flags->hash = 1;
@@ -30,7 +42,7 @@ void ft_is_nonletter(char *str, t_conv *flags)
 	return ;
 }
 
-void ft_is_letter_flag(char **str, t_conv *flags)
+void	ft_is_letter_flag(char **str, t_conv *flags)
 {
 	if (**str == 'z' && flags->letter < 6)
 		flags->letter = 6;
@@ -53,7 +65,7 @@ void ft_is_letter_flag(char **str, t_conv *flags)
 	return ;
 }
 
-void ft_get_widthorprecision(char **str, t_conv *flags)
+void	ft_get_widthorprecision(char **str, t_conv *flags)
 {
 	if (flags->point == 1)
 	{
@@ -72,13 +84,11 @@ void ft_get_widthorprecision(char **str, t_conv *flags)
 	--(*str);
 }
 
-t_conv *ft_read_flags(char **str, t_conv *flags)
+t_conv	*ft_read_flags(char **str, t_conv *flags)
 {
-	while(**str)
+	while (**str)
 	{
-		if (**str == 's' || **str == 'S' || **str == 'p' || **str == 'D' || **str == 'i'
-			|| **str == 'o' || **str == 'O' || **str == 'u' || **str == 'U' || **str == 'x' || **str == 'X'
-			|| **str == 'c' || **str == 'C' || **str == 'd' || **str == '%' || ft_nonformat(**str))
+		if (ft_strchr(CONV, **str) != NULL || ft_nonformat(**str))
 		{
 			flags->output = **str;
 			break ;
@@ -89,7 +99,10 @@ t_conv *ft_read_flags(char **str, t_conv *flags)
 			ft_is_nonletter(*str, flags);
 		}
 		else if (**str == '0')
-			flags->minuszero < 2  && flags->point == 0 ? flags->minuszero = 1 : 0;
+		{
+			flags->minuszero < 2 && flags->point == 0
+			? flags->minuszero = 1 : 0;
+		}
 		else
 			ft_get_widthorprecision(str, flags);
 		++(*str);
