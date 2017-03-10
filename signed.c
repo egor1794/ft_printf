@@ -59,7 +59,7 @@ int ft_print_lesszero(t_conv *flags, intmax_t ar)
 int ft_print_morezero(t_conv *flags, intmax_t ar)
 {
 	if (flags->minuszero == 2)
-		flags->count += ft_print_morezero_withzerof(flags, ar);
+		return (ft_print_morezero_withzerof(flags, ar));
 	else if (flags->minuszero == 1)
 	{
 		if (flags->plusspace == 1)
@@ -99,5 +99,6 @@ int ft_print_morezero_withzerof(t_conv *flags, intmax_t ar)
 		ft_putnbr_base((uintmax_t)(ar), DEC_BASE);
 		flags->count += ft_calc_signed_num_width(ar, flags);
 	}
+	flags->plusspace != 0 ? flags->count++ : 0;
 	return (flags->count);
 }

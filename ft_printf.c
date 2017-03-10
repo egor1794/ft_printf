@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-#include <stdio.h>
 
 int ft_printf(const char *fmt, ...)
 {
@@ -20,15 +19,7 @@ int ft_printf(const char *fmt, ...)
 			fmt++;
 		}
 		else
-		{
-			++fmt;
-			flags = ft_read_flags((char **)&fmt, flags);
-			if (ft_nonformat(flags->output) == 1)
-				res += ft_print_arg(flags, NULL) - 1;
-			else
-				res += ft_print_arg(flags, va_arg(args, void*)) - 1; //iterate string here please. 	ft_printf("{%04.1d}", 0);ft_printf("{%2d}", 0);
-			ft_bzero_flags(flags);
-		}
+			res += ft_percent_found((char **)&fmt, flags, args);
 		res++;
 		*fmt != '\0' ? fmt++ : 0;
 	}
@@ -36,7 +27,7 @@ int ft_printf(const char *fmt, ...)
 	return (res);
 }
 
-/*int ft_percent_found(char **fmt, t_conv *flags, va_list args)
+int ft_percent_found(char **fmt, t_conv *flags, va_list args)
 {
 	int res;
 
@@ -46,10 +37,10 @@ int ft_printf(const char *fmt, ...)
 	if (ft_nonformat(flags->output) == 1)
 		res += ft_print_arg(flags, NULL) - 1;
 	else
-		res += ft_print_arg(flags, va_arg(args, void*)) - 1; //iterate string here please. 	ft_printf("{%04.1d}", 0);ft_printf("{%2d}", 0);
+		res += ft_print_arg(flags, va_arg(args, void*)) - 1;
 	ft_bzero_flags(flags);
 	return (res);
-}*/
+}
 
 void ft_bzero_flags(t_conv *flags)
 {
@@ -65,48 +56,3 @@ void ft_bzero_flags(t_conv *flags)
 	flags->kostyl = 0;
 	flags->ispoint = 0;
 }
-
-/*int  main()
-{
-	int c = 10;
-	int a = ft_printf("%p", NULL);
-	printf("\n%d\n", a);
-	int b = printf("%p", NULL);
-	printf("\n%d", b);
-}*/
-
-/*# 0093 (int)
-ft_printf("@moulitest: %.o %.0o", 0, 0);
-1. (   15) -->@moulitest: 0 0<--
-2. (   13) -->@moulitest:  <--
-
-# 0094 (int)
-ft_printf("@moulitest: %5.o %5.0o", 0, 0);
-1. (   25) -->@moulitest:      0      0<--
-2. (   23) -->@moulitest:            <--
-
-
-# 0095 (int)
-ft_printf("@moulitest: %#.o %#.0o", 0, 0);
-1. (   13) -->@moulitest:  <--
-2. (   15) -->@moulitest: 0 0<--
- ============================================
- # 0137 (short)
-  ft_printf("%hd", 32767);
-  1. (    2) -->-1<--
-  2. (    5) -->32767<--
-
-# 0139 (short)
-  ft_printf("%hd", 32768);
-  1. (    1) -->0<--
-  2. (    6) -->-32768<--
-
- # 0175
-  ft_printf("@moulitest: %.d %.0d", 0, 0);
-  1. (   15) -->@moulitest:    <--
-  2. (   13) -->@moulitest:  <--
-
-# 0176 (int)
-	ft_printf("@moulitest: %5.d %5.0d", 0, 0);
-	1. (   23) -->@moulitest:          <--
-	2. (   23) -->@moulitest:            <--*/

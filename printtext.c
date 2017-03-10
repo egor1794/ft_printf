@@ -14,12 +14,12 @@
 
 int	ft_print_text(t_conv *flags, void *ar)
 {
-	if (flags->output == 's' || flags->output == 'S')
+	if (flags->output == 's')
 		return (ft_printstrandflags(flags, (char *)ar));
 	if (flags->output == 'c' || flags->output == 'C')
 		return (ft_printcharwithflags((char)ar, flags));
-	/*if (flags->output == 'S')				//plans for the future
-		return (ft_wprintstrwithflags(());*/
+	if (flags->output == 'S')
+		return(ft_printwstr_withflags((wchar_t *)ar, flags));
 	return (-1);
 }
 

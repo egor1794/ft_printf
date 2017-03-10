@@ -45,20 +45,7 @@ int		ft_print_unsigned_arg(t_conv *flags, uintmax_t ar)
 	return (flags->count);
 }
 
-char *ft_get_ubase(t_conv *flags)
-{
-	if (flags->output == 'x')
-		return(HEx_BASE);
-	if (flags->output == 'X')
-		return (HEX_BASE);
-	if (flags->output == 'o' || flags->output == 'O')
-		return (OCT_BASE);
-	if (flags->output == 'u' || flags->output == 'U')
-		return (DEC_BASE);
-    return (DEC_BASE);
-}
-
-int ft_print_p(t_conv *flags, uintmax_t ar) //updated
+int ft_print_p(t_conv *flags, uintmax_t ar)
 {
 	flags->output = 'x';
 	flags->hash = 1;

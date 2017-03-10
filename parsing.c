@@ -1,5 +1,4 @@
 #include "libftprintf.h"
-#include <stdio.h>
 
 int ft_nonformat(char c)
 {
@@ -20,10 +19,12 @@ void ft_is_nonletter(char *str, t_conv *flags)
 		flags->plusspace = 1;
 	else if (*str == '+')
 		flags->plusspace = 2;
-	else if (*str == '.')//&& ft_isdigit(*(str + 1))) //эта штука может не быть диджетом (нужно немного другое условие)
+	else if (*str == '.')
 	{
 		if (*str == '.' && ft_isdigit(*(str + 1)))
 			flags->point = 1;
+		if (*str == '.' && !ft_isdigit(*(str + 1)))
+			flags->precision = 0;
 		flags->ispoint = 1;
 	}
 	return ;
@@ -74,13 +75,11 @@ void ft_get_widthorprecision(char **str, t_conv *flags)
 t_conv *ft_read_flags(char **str, t_conv *flags)
 {
 	while(**str)
-	{ //REWRITE FIRST IF IN IT ONE STRING WITH STRCHR
+	{
 		if (**str == 's' || **str == 'S' || **str == 'p' || **str == 'D' || **str == 'i'
 			|| **str == 'o' || **str == 'O' || **str == 'u' || **str == 'U' || **str == 'x' || **str == 'X'
 			|| **str == 'c' || **str == 'C' || **str == 'd' || **str == '%' || ft_nonformat(**str))
 		{
-			//if (ft_nonformat(**str))
-				//break ;
 			flags->output = **str;
 			break ;
 		}
@@ -91,22 +90,9 @@ t_conv *ft_read_flags(char **str, t_conv *flags)
 		}
 		else if (**str == '0')
 			flags->minuszero < 2  && flags->point == 0 ? flags->minuszero = 1 : 0;
-		else //if (ft_isdigit(*str))
+		else
 			ft_get_widthorprecision(str, flags);
 		++(*str);
 	}
-	//t_print_struct(flags);
 	return (flags);
 }
-
-/*void t_print_struct(t_conv *flags)
-{
-	printf("CONVERSION: [ %c ] \n", flags->output);
-	printf("HASH: [ %d ]\n", flags->hash);
-	printf("MINUSZERO: [ %d ]\n", flags->minuszero);
-	printf("PLUSSPACE: [ %d ]\n", flags->plusspace);
-	printf("WIDTH: [ %d ]\n", flags->width);
-	printf("PRECISION: [ %d ]\n", flags->precision);
-	printf("LETTER: [ %d ]\n", flags->letter);
- 	printf ("POINT: [ %d ]\n", flags->point);
-}*/
