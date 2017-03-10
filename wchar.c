@@ -49,6 +49,7 @@ int ft_printwstr(wchar_t *str, t_conv *flags)
 	int i;
 	int count;
 	wchar_t *tmp;
+	const char *s;
 
 	i = 0;
 	count = 0;
@@ -64,9 +65,10 @@ int ft_printwstr(wchar_t *str, t_conv *flags)
 	? count = flags->precision : 0;
 	while(count-- > 0)
 	{
+		s = unicode_to_utf8(*str);
 		ft_putstr(unicode_to_utf8(*str));
 		str++;
-		i++;
+		i += ft_strlen(s);
 	}
 	return (i);
 }
@@ -127,7 +129,7 @@ int		ft_printwstr_withflags(wchar_t *str, t_conv *flags)
 
 /*int main(void)
 {
-	wchar_t *str = L"Привіт";
+	wchar_t *str = L"@@";
  	ft_printf("%S", str);
 	return (0);
 }*/
