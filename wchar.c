@@ -130,6 +130,9 @@ int		ft_printwstr_withflags(wchar_t *str, t_conv *flags)
 /*int main(void)
 {
 	wchar_t *str = L"@@";
- 	ft_printf("%S", str);
+ 	int a = ft_printf("%ls", str);
+	printf("\n%d\n", a);
+	int b = printf("%ls", str);
+	printf("\n%d", b);
 	return (0);
 }*/

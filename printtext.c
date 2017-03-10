@@ -14,6 +14,13 @@
 
 int	ft_print_text(t_conv *flags, void *ar)
 {
+	if (flags->letter == 3)
+	{
+		if (flags->output == 's')
+			flags->output = 'S';
+		if (flags->output == 'c')
+			flags->output = 'C';
+	}
 	if (flags->output == 's')
 		return (ft_printstrandflags(flags, (char *)ar));
 	if (flags->output == 'c' || flags->output == 'C')
