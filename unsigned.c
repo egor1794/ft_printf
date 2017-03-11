@@ -30,7 +30,7 @@ int		ft_print_unsigned_arg(t_conv *flags, uintmax_t ar)
 	flags->minuszero = 0 : 0;
 	if (flags->minuszero == 2)
 	{
-		flags->count += ft_print_unsigned_arg_subf(flags, ar);
+		return (ft_print_unsigned_arg_subf(flags, ar));
 	}
 	if (flags->minuszero != 2)
 	{
